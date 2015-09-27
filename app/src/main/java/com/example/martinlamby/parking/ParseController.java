@@ -6,7 +6,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.widget.EditText;
 
-import com.parse.FindCallback;
 import com.parse.LogInCallback;
 import com.parse.ParseException;
 import com.parse.ParseObject;
@@ -70,7 +69,7 @@ public class ParseController {
     //saves location of parked car to Cloud (Parse)
     public static void saveParkedCarPositionToParse(double latitude, double longitude) {
         ParseObject parkedCarPosition = new ParseObject("ParkedCarPosition");
-        parkedCarPosition.add("latitude",String.valueOf(latitude));
+        parkedCarPosition.add("latitude", String.valueOf(latitude));
         parkedCarPosition.add("longitude", String.valueOf(longitude));
         parkedCarPosition.add("username", ParseUser.getCurrentUser().getUsername().toString());
         parkedCarPosition.saveInBackground(new SaveCallback() {
@@ -107,7 +106,7 @@ public class ParseController {
             System.out.println("Error:  "+e.getMessage());
 
         }
-        System.out.println("LAST PARKED CAR LOCATION:   " +parkedCarLocation);
+        System.out.println("LAST PARKED CAR LOCATION:   " + parkedCarLocation);
         return parkedCarLocation;
     }
 
@@ -116,20 +115,21 @@ public class ParseController {
         final ArrayList<ParkedCarLocation> privateParkedCarLocations = new ArrayList<>();
         ParseQuery<ParseObject> query = ParseQuery.getQuery("ParkedCarPosition");
         query.whereEqualTo("username", ParseUser.getCurrentUser().getUsername().toString());
-        query.findInBackground(new FindCallback<ParseObject>() {
-            @Override
-            public void done(List<ParseObject> list, ParseException e) {
-                for (int i = 0; i < list.size(); i++) {
+        try {
+            List<ParseObject> list = query.find();
 
-                    double latitude = parseDoubleFromString(list.get(i).get("latitude").toString());
-                    double longitude = parseDoubleFromString(list.get(i).get("longitude").toString());
+            for (int i = 0; i < list.size(); i++) {
 
-                    ParkedCarLocation x = new ParkedCarLocation(latitude, longitude);
-                    privateParkedCarLocations.add(x);
+                double latitude = parseDoubleFromString(list.get(i).get("latitude").toString());
+                double longitude = parseDoubleFromString(list.get(i).get("longitude").toString());
 
-                }
+                ParkedCarLocation x = new ParkedCarLocation(latitude, longitude);
+                privateParkedCarLocations.add(x);
+
             }
-        });
+        }catch (Exception e){
+            System.out.println("Error:  "+e.getMessage());
+        }
         return privateParkedCarLocations;
     }
 
@@ -137,21 +137,20 @@ public class ParseController {
     public static ArrayList<ParkedCarLocation> getPublicParkedCarPositions() {
         final ArrayList<ParkedCarLocation> publicParkedCarLocations = new ArrayList<>();
         ParseQuery<ParseObject> query = ParseQuery.getQuery("ParkedCarPosition");
-        query.findInBackground(new FindCallback<ParseObject>() {
-            @Override
-            public void done(List<ParseObject> list, ParseException e) {
-                for (int i = 0; i < list.size(); i++) {
+        try {
+            List<ParseObject> list = query.find();
+            for (int i = 0; i < list.size(); i++) {
 
-                    double latitude = parseDoubleFromString(list.get(i).get("latitude").toString());
-                    double longitude = parseDoubleFromString(list.get(i).get("longitude").toString());
+                double latitude = parseDoubleFromString(list.get(i).get("latitude").toString());
+                double longitude = parseDoubleFromString(list.get(i).get("longitude").toString());
 
-                    ParkedCarLocation x = new ParkedCarLocation(latitude, longitude);
-                    publicParkedCarLocations.add(x);
+                ParkedCarLocation x = new ParkedCarLocation(latitude, longitude);
+                publicParkedCarLocations.add(x);
 
-                }
             }
-        });
-
+        }catch (Exception e) {
+            System.out.println("Error:  "+e.getMessage());
+        }
         return publicParkedCarLocations;
     }
 
