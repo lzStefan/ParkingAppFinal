@@ -25,8 +25,8 @@
     <string name="selected">row is selected</string>
     <string name="no_contact_selected">No contact selected</string>
     <string name="position_saved">Position saved</string>
-    <string name="publicCL">publicCL</string>
-    <string name="privateCL">privateCL</string>
+    <string name="publicCL">key</string>
+    <string name="privateCL">key</string>
     <string name="login_in_progress">Login in progress</string>
     <string name="please_wait">Please wait...</string>
     <string name="location_not_found">Location not found</string>

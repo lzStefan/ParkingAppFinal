@@ -33,8 +33,10 @@ public class DisplayHeatMapActivity extends FragmentActivity
     //The map and the locations required for the heat map
 
     GoogleMap map;
-    private ArrayList<ParkedCarLocation> parkedCarLocations = new ArrayList<>();
+    ArrayList<ParkedCarLocation> parkedCarLocations = new ArrayList<>();
+    ArrayList<LatLng> locList = new ArrayList<LatLng>() {
 
+    };
 
     //Setting up the map with a mapfragment and getting the locations from HeatMapActivity via Intent
     @Override
@@ -46,9 +48,12 @@ public class DisplayHeatMapActivity extends FragmentActivity
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
 
-        Intent callDataIntent = getIntent();
+        Intent heatmapIntent = getIntent();
 
-        parkedCarLocations = callDataIntent.getExtras().getParcelableArrayList("");
+        parkedCarLocations = heatmapIntent.getExtras().getParcelableArrayList(getString(R.string.publicCL));
+
+
+
     }
 
     //setting up the heat map
@@ -57,37 +62,38 @@ public class DisplayHeatMapActivity extends FragmentActivity
 
         //ArrayList of type LatLng required for HeatmapTileProvider
 
-         ArrayList<LatLng> locList = new ArrayList<LatLng>() {
-
-        };
-
 
 
         for (int i = 0; i < parkedCarLocations.size(); i++) {
             locList.add(new LatLng(parkedCarLocations.get(i).getLatitude(), parkedCarLocations.get(i).getLongitude()));
 
         }
+        if(locList.size()==0){
+            SignUpActivity.showErrorToast(getApplicationContext(), getString(R.string.car_not_parked));
+        }else {
 
-        //Parameters for heat map customization (Gradient)
 
-        int[] colors = {
-                Color.rgb(102, 225, 0),
-                Color.rgb(255, 0, 0)
-        };
-        float[] startingPoints = {
-                0.2f, 1f
-        };
+            //Parameters for heat map customization (Gradient)
 
-        Gradient gradient = new Gradient(colors, startingPoints);
+            int[] colors = {
+                    Color.rgb(102, 225, 0),
+                    Color.rgb(255, 0, 0)
+            };
+            float[] startingPoints = {
+                    0.2f, 1f
+            };
 
-        //Setting up the overlay that will be added to the map
+            Gradient gradient = new Gradient(colors, startingPoints);
 
-        HeatmapTileProvider mProvider = new HeatmapTileProvider.Builder()
-                .data(locList)
-                .gradient(gradient)
-                .build();
+            //Setting up the overlay that will be added to the map
 
-        TileOverlay mOverlay = map.addTileOverlay(new TileOverlayOptions().tileProvider(mProvider));
+            HeatmapTileProvider mProvider = new HeatmapTileProvider.Builder()
+                    .data(locList)
+                    .gradient(gradient)
+                    .build();
+
+            TileOverlay mOverlay = map.addTileOverlay(new TileOverlayOptions().tileProvider(mProvider));
+        }
     }
 
     //adding the provided heat map and centering camera to current position of user with moderate zoom

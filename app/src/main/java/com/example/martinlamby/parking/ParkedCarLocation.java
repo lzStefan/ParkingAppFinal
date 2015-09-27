@@ -17,7 +17,7 @@ public class ParkedCarLocation implements Parcelable{
 
     private double latitude;
     private double longitude;
-
+    private String username;
 
     //constructor for ParkedCarLocation
 
@@ -42,6 +42,7 @@ public class ParkedCarLocation implements Parcelable{
     protected ParkedCarLocation(Parcel in) {
         latitude = in.readDouble();
         longitude = in.readDouble();
+        username = in.readString();
     }
 
 
@@ -66,5 +67,6 @@ public class ParkedCarLocation implements Parcelable{
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeDouble(latitude);
         dest.writeDouble(longitude);
+        dest.writeString(username);
     }
 }

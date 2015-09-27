@@ -1,6 +1,7 @@
 package com.example.martinlamby.parking;
 
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -10,55 +11,89 @@ import java.util.ArrayList;
 
 //TODO: COMMENTS ARE MISSING !!!
 
-    //Provides the menu for private and public heat map and calls the Datasets (from Parse.com) for both.
-
 public class HeatMapActivity extends AppCompatActivity {
-
-    // parking locations of all users and the current user
 
     private ArrayList<ParkedCarLocation> publicParkedCarLocations = new ArrayList<>();
     private ArrayList<ParkedCarLocation> privateParkedCarLocations = new ArrayList<>();
-
-
-    //setting up the layout and onClickListeners for the menu, and adding values to the ArrayLists
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_heat_map);
-        privateParkedCarLocations = ParseController.getPrivateParkedCarPositions();
-        publicParkedCarLocations = ParseController.getPublicParkedCarPositions();
+
+        PublicHeatMapTask publicHeatMapTask = new PublicHeatMapTask();
+        PrivateHeatMapTask privateHeatMapTask = new PrivateHeatMapTask();
+        publicHeatMapTask.execute();
+        privateHeatMapTask.execute();
+
+    }
+
+    private class PublicHeatMapTask extends AsyncTask<Void,Void,ArrayList<ParkedCarLocation>>{
+
+        private Button publicHeatmap;
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            publicHeatmap = (Button) findViewById(R.id.publicHeatMapButton);
+        }
+
+        @Override
+        protected ArrayList<ParkedCarLocation> doInBackground(Void... params) {
+            publicParkedCarLocations = ParseController.getPublicParkedCarPositions();
+
+            return publicParkedCarLocations;
+        }
+
+        @Override
+        protected void onPostExecute(ArrayList<ParkedCarLocation> parkedCarLocations) {
+            super.onPostExecute(parkedCarLocations);
+            System.out.println("PUBLIC   " + parkedCarLocations.size());
+            publicHeatmap.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+                    Intent heatmapIntent = (new Intent(HeatMapActivity.this, DisplayHeatMapActivity.class));
+                    heatmapIntent.putExtra(getString(R.string.publicCL), publicParkedCarLocations);
+                    startActivity(heatmapIntent);
+                }
+            });
+        }
+    }
 
 
-        Button privateHeatmap = (Button) findViewById(R.id.privateHeatMapButton);
-        Button publicHeatmap = (Button) findViewById(R.id.publicHeatMapButton);
 
+    private class PrivateHeatMapTask extends AsyncTask<Void,Void,ArrayList<ParkedCarLocation>>{
 
-        //starts the displayHeatmapActivity and passes the dataset for the public heatmap (all users)
+        private Button privateHeatmap;
 
-        publicHeatmap.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            privateHeatmap = (Button) findViewById(R.id.privateHeatMapButton);
+        }
 
-                Intent heatmapIntent = (new Intent(getApplicationContext(), DisplayHeatMapActivity.class));
-                heatmapIntent.putExtra(getString(R.string.publicCL), publicParkedCarLocations);
-                startActivity(heatmapIntent);
-            }
-        });
+        @Override
+        protected ArrayList<ParkedCarLocation> doInBackground(Void... params) {
+            privateParkedCarLocations = ParseController.getPrivateParkedCarPositions();
 
-        //starts the displayHeatmapActivity and passes the dataset for the private heatmap (current user)
+            return privateParkedCarLocations;
+        }
 
-        privateHeatmap.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        @Override
+        protected void onPostExecute(ArrayList<ParkedCarLocation> parkedCarLocations) {
+            super.onPostExecute(parkedCarLocations);
+            System.out.println("PRIVATE   " + parkedCarLocations.size());
+            privateHeatmap.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
 
-                Intent heatmapIntent = (new Intent(getApplicationContext(), DisplayHeatMapActivity.class));
-                heatmapIntent.putExtra(getString(R.string.privateCL), privateParkedCarLocations);
-                startActivity(heatmapIntent);
-            }
-        });
-
+                    Intent heatmapIntent = (new Intent(getApplicationContext(), DisplayHeatMapActivity.class));
+                    heatmapIntent.putExtra(getString(R.string.privateCL), privateParkedCarLocations);
+                    startActivity(heatmapIntent);
+                }
+            });
+        }
     }
 
 
