@@ -48,8 +48,10 @@ public class CustomContactListAdapter extends ArrayAdapter<Contact> {
             @Override
             public void onClick(View v) {
                 for (int i = 0; i < contacts.size(); i++) {
+                    if(list.getChildAt(i) != null){
                     contacts.get(i).setIsSelected(false);
                     list.getChildAt(i).setBackgroundColor(Color.TRANSPARENT);
+                    }
                 }
                 if (contacts.get(position).getIsSelected() == false) {
                     finalRowView.setBackgroundColor(SELECTED_ITEM_COLOR);
