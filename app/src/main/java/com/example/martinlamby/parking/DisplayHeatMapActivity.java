@@ -61,6 +61,8 @@ public class DisplayHeatMapActivity extends FragmentActivity
 
         };
 
+
+
         for (int i = 0; i < parkedCarLocations.size(); i++) {
             locList.add(new LatLng(parkedCarLocations.get(i).getLatitude(), parkedCarLocations.get(i).getLongitude()));
 
