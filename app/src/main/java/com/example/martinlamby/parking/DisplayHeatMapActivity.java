@@ -21,6 +21,7 @@ import java.util.ArrayList;
 
 
     //The class responsible for displaying the heat map of the user, or all users, depending on the ArrayList passed from the class HeatMapActivity
+    //On other machines displaying the map only works with the .Apk, because of the required API key for using googlemaps
 
 public class DisplayHeatMapActivity extends FragmentActivity
         implements OnMapReadyCallback {
