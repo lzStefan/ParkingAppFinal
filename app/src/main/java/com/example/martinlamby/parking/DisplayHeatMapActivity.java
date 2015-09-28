@@ -20,8 +20,8 @@ import java.util.ArrayList;
 
 
 
-    //The class responsible for displaying the heat map of the user, or all users, depending on the ArrayList passed from the class HeatMapActivity
-    //On other machines displaying the map only works with the .Apk, because of the required API key for using googlemaps
+//The class responsible for displaying the heat map of the user, or all users, depending on the ArrayList passed from the class HeatMapActivity
+//On other machines displaying the map only works with the .Apk, because of the required API key for using googlemaps
 
 public class DisplayHeatMapActivity extends FragmentActivity
         implements OnMapReadyCallback {
@@ -102,7 +102,7 @@ public class DisplayHeatMapActivity extends FragmentActivity
         CameraUpdate center =
                 CameraUpdateFactory.newLatLng(new LatLng(GeoLocationService.getLastLocationLatitude(),
                         GeoLocationService.getLastLocationLongitude()));
-        CameraUpdate zoom = CameraUpdateFactory.zoomTo(12);
+        CameraUpdate zoom = CameraUpdateFactory.zoomTo(10);
 
         googleMap.moveCamera(center);
         googleMap.animateCamera(zoom);

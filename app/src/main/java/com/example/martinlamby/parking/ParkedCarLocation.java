@@ -4,11 +4,11 @@ import android.os.Parcel;
 import android.os.Parcelable;
 
 
-    //custom data type for storing locations specific to each user
+//custom data type for storing locations specific to each user
 
 public class ParkedCarLocation implements Parcelable{
 
-    //location (divided in latitude and longitude) and username
+//location (divided in latitude and longitude) and username
 
     private double latitude;
     private double longitude;
