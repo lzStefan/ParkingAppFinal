@@ -8,7 +8,7 @@ import android.content.SharedPreferences;
 import com.parse.Parse;
 import com.parse.ParseUser;
 
-//TODO: SECOND INSPECTION DONE HEAD COMMENT IS MISSING
+//Builds the parse connection and provides a progressdialog for login- and signupactivity
 
 public class StartActivity extends Application {
 

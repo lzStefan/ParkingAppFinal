@@ -4,7 +4,7 @@ package com.example.martinlamby.parking;
  * Created by martinlamby on 25.08.15.
  */
 
-//TODO: SECOND INSPECTION DONE HEAD COMMENT IS MISSING
+//Custom data type for contactlist (Sharing-function)
 
 public class Contact {
 

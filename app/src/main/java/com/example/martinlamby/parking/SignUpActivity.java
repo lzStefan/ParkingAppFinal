@@ -10,7 +10,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-//TODO: SECOND INSPECTION DONE HEAD COMMENT IS MISSING
+//Handles the first Signup and starts the Mainactivity if successful
 
 public class SignUpActivity extends AppCompatActivity {
 

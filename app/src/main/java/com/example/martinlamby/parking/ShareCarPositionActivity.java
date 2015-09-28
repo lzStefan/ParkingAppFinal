@@ -14,7 +14,7 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 
-//TODO: SECOND INSPECTION DONE HEAD COMMENT IS MISSING
+//Implementation of the share car function with  contact list from CustomContactListAdapter
 
 public class ShareCarPositionActivity extends AppCompatActivity {
 

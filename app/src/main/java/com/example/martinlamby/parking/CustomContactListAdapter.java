@@ -15,7 +15,7 @@ import java.util.ArrayList;
  * Created by martinlamby on 25.08.15.
  */
 
-//TODO: SECOND INSPECTION DONE HEAD COMMENT IS MISSING
+//Class responsible for providing the ContactList for ShareCarPosition
 
 public class CustomContactListAdapter extends ArrayAdapter<Contact> {
 

@@ -9,12 +9,16 @@ import android.widget.Button;
 
 import java.util.ArrayList;
 
-//TODO: COMMENTS ARE MISSING !!!
+//Calls Data from parse.com required for the Heatmap and provides the menu for private and public Heatmap
 
 public class HeatMapActivity extends AppCompatActivity {
 
     private ArrayList<ParkedCarLocation> publicParkedCarLocations = new ArrayList<>();
     private ArrayList<ParkedCarLocation> privateParkedCarLocations = new ArrayList<>();
+
+
+    //initiates the Layout and calls the Datasets for the heatmaps from parse.com in an AsyncTask
+    //Sets up the onClickListeners
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

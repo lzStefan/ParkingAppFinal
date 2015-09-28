@@ -10,7 +10,8 @@ import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.location.LocationServices;
 
-//TODO: SECOND INSPECTION DONE HEAD COMMENT IS MISSING !!!
+//Implements all functions for getting the current location
+
 
 public class GeoLocationService extends Service implements GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener{
 

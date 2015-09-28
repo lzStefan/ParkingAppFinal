@@ -21,7 +21,7 @@ import java.util.List;
  * Created by martinlamby on 26.09.15.
  */
 
-//TODO: SECOND INSPECTION DONE HEAD COMMENT IS MISSING
+//Handles all Parse-related (backend) tasks
 
 public class ParseController {
 

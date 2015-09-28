@@ -7,7 +7,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
-//TODO: SECOND INSPECTION DONE HEAD COMMENT IS MISSING
+//Handles login and starts Mainactivity on successful login
 
 public class LoginActivity extends AppCompatActivity {
 

@@ -13,7 +13,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 
-//TODO: SECOND INSPECTION DONE HEAD COMMENT IS MISSING
+//Class providing the Main menu and Navigation function
 
 public class MainActivity extends AppCompatActivity {
 

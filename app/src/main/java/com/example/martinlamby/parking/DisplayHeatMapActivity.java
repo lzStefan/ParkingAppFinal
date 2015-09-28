@@ -23,7 +23,7 @@ import java.util.ArrayList;
  * Created by Revo on 9/15/2015.
  */
 
-//TODO: COMMENTS ARE MISSING
+
 
     //The class responsible for displaying the heat map of the user, or all users, depending on the ArrayList passed from the class HeatMapActivity
 

@@ -10,7 +10,7 @@ import android.hardware.SensorManager;
 import android.os.CountDownTimer;
 import android.os.IBinder;
 
-//TODO: SECOND INSPECTION DONE HEAD COMMENT IS MISSING
+//Implementation of the shake detector
 
 public class ShakeDetectorService extends Service {
 

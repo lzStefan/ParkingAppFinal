@@ -7,7 +7,7 @@ import android.os.Parcelable;
  * Created by martinlamby on 16.09.15.
  */
 
-//TODO: COMMENTS ARE MISSING
+
 
     //custom data type for storing locations specific to each user
 
