@@ -102,7 +102,7 @@ public class DisplayHeatMapActivity extends FragmentActivity
         CameraUpdate center =
                 CameraUpdateFactory.newLatLng(new LatLng(GeoLocationService.getLastLocationLatitude(),
                         GeoLocationService.getLastLocationLongitude()));
-        CameraUpdate zoom = CameraUpdateFactory.zoomTo(10);
+        CameraUpdate zoom = CameraUpdateFactory.zoomTo(14);
 
         googleMap.moveCamera(center);
         googleMap.animateCamera(zoom);
