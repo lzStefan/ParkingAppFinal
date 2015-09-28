@@ -4,9 +4,6 @@ import android.os.Parcel;
 import android.os.Parcelable;
 
 
-
-
-
     //custom data type for storing locations specific to each user
 
 public class ParkedCarLocation implements Parcelable{

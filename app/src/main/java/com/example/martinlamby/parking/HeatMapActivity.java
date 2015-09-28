@@ -18,7 +18,7 @@ public class HeatMapActivity extends AppCompatActivity {
 
 
     //initiates the Layout and calls the Datasets for the heatmaps from parse.com in an AsyncTask
-    //Sets up the onClickListeners
+    //Sets up the onClickListeners and sends intent with dataset on click
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,6 +31,8 @@ public class HeatMapActivity extends AppCompatActivity {
         privateHeatMapTask.execute();
 
     }
+
+    //Button, data and intent for public heatmap
 
     private class PublicHeatMapTask extends AsyncTask<Void,Void,ArrayList<ParkedCarLocation>>{
 
@@ -65,7 +67,7 @@ public class HeatMapActivity extends AppCompatActivity {
         }
     }
 
-
+    //Button, data, and intent for private Heatmap
 
     private class PrivateHeatMapTask extends AsyncTask<Void,Void,ArrayList<ParkedCarLocation>>{
 
