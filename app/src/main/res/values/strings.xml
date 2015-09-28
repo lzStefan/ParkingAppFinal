@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Parking</string>
+    <string name="app_name">SmartPark</string>
 
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
@@ -7,15 +7,12 @@
     <string name="shared_preferences_key">com.example.martinlamby.parking</string>
     <string name="sign_up_in_progress">Sign up in progress</string>
     <string name="google_maps_app">com.google.android.apps.maps</string>
-
     <string name="email_subject">Location of my Car</string>
     <string name="car_not_parked">You haven\'t parked your car yet</string>
-
-
     <string name="missing_username">username is missing</string>
     <string name="missing_password">password is missing</string>
     <string name="missing_email">e-mail is missing</string>
-    <string name="title_activity_sign_up">SignUpActivity</string>
+    <string name="title_activity_sign_up">SmartPark</string>
     <string name="user_is_signed_up">userIsSignedUp</string>
     <string name="title_activity_login">LoginActivity</string>
     <string name="title_activity_main">MainActivity</string>
