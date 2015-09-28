@@ -1,8 +1,6 @@
 package com.example.martinlamby.parking;
 
-/**
- * Created by martinlamby on 25.08.15.
- */
+
 
 //Custom data type for contactlist (Sharing-function)
 

@@ -17,9 +17,6 @@ import com.parse.SignUpCallback;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by martinlamby on 26.09.15.
- */
 
 //Handles all Parse-related (backend) tasks
 

@@ -11,9 +11,7 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
-/**
- * Created by martinlamby on 25.08.15.
- */
+
 
 //Class responsible for providing the ContactList for ShareCarPosition
 

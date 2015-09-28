@@ -3,9 +3,7 @@ package com.example.martinlamby.parking;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-/**
- * Created by martinlamby on 16.09.15.
- */
+
 
 
 
